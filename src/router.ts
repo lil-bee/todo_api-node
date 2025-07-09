@@ -1,12 +1,11 @@
 import { Router } from "express";
+import { getTodos } from "./handlers/todo";
 
 const router = Router();
 
 /* ===== TODO ====  */
 
-router.get("/todos", (req, res) => {
-  res.json({ message: "todos" });
-});
+router.get("/todos", getTodos);
 
 router.get("/todos/:id", (req, res) => {});
 
@@ -18,16 +17,20 @@ router.delete("/todos/:id", (req, res) => {});
 
 /* ===== USER ====  */
 
-router.get("/user", (req, res) => {
-  res.json({ message: "user" });
+router.get("/users", (req, res) => {
+  res.json({ message: "users" });
 });
 
-router.get("/user/:id", (req, res) => {});
+router.get("/users/:id", (req, res) => {});
+
+router.put("/users/:id", (req, res) => {});
+
+router.delete("/users/:id", (req, res) => {});
+
+/* ===== AUTH ====  */
 
 router.post("/register", (req, res) => {});
 
 router.post("/login", (req, res) => {});
 
-router.put("/user/:id", (req, res) => {});
-
-router.delete("/user/:id", (req, res) => {});
+export default router;
