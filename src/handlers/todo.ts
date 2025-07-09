@@ -13,3 +13,15 @@ export const getTodos = async (req: Request, res: Response) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
+
+export const getOneTodo = async (req: Request, res: Response) => {
+  try {
+    const id = req.params.id;
+    const result = await pool.query(`SELECT * FROM todos WHERE todo_id=${id}`);
+
+    res.json({ data: result.rows });
+  } catch (err) {
+    console.error("Error getting todo:", err);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
