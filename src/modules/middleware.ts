@@ -15,3 +15,23 @@ export const validate = (validations: ValidationChain[]) => {
     res.status(400).json({ errors: errors.array() });
   };
 };
+
+export const notFound = (req: Request, res: Response) => {
+  res.status(404).json({
+    status: "fail",
+    message: `Route ${req.originalUrl} not found`,
+  });
+};
+
+export const errorHandler = (
+  err: Error,
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  console.log(err.stack);
+  res.status(500).json({
+    status: "error",
+    message: err.message || "Internal Server Error",
+  });
+};
