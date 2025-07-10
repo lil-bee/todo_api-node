@@ -9,7 +9,7 @@ POST http://localhost:3000/api/todos/
 Content-Type: application/json
 
 {
-  "title": "Coba insert aman",
+  "title": "",
   "description": "Gunakan parameterized query",
   "user_id": 1
 }

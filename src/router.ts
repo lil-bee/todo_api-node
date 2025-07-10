@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { body, param } from "express-validator";
 import {
   createTodo,
   deleteTodo,
@@ -6,6 +7,7 @@ import {
   getTodos,
   updateTodo,
 } from "./handlers/todo";
+import { validate } from "./modules/middleware";
 
 const router = Router();
 
@@ -15,9 +17,23 @@ router.get("/todos", getTodos);
 
 router.get("/todos/:id", getOneTodo);
 
-router.post("/todos", createTodo);
+router.post(
+  "/todos",
+  validate([
+    body("title").notEmpty().withMessage("Title is required"),
+    body("description").notEmpty().withMessage("Description is required"),
+    body("user_id").notEmpty().isInt().withMessage("User ID must be number"),
+  ]),
+  createTodo
+);
 
-router.put("/todos/:id", updateTodo);
+router.put(
+  "/todos/:id",
+  param("id").isInt().withMessage("Todo ID must be a number"),
+  body("title").notEmpty().withMessage("Title is required"),
+  body("description").notEmpty().withMessage("Description is required"),
+  updateTodo
+);
 
 router.delete("/todos/:id", deleteTodo);
 
