@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { pool } from "../db";
+import { errorResponse, successResponse } from "../utils/response";
 
 export const getTodos = async (req: Request, res: Response) => {
   try {
@@ -7,10 +8,10 @@ export const getTodos = async (req: Request, res: Response) => {
       "SELECT * FROM todos ORDER BY todo_id ASC "
     );
 
-    res.json({ data: result.rows });
+    return successResponse(res, "Todos fetched succssfully", result.rows);
   } catch (err) {
     console.error("Error getting todos:", err);
-    res.status(500).json({ message: "Internal server error" });
+    return errorResponse(res, "Failed to fetch todos", 500);
   }
 };
 
@@ -19,10 +20,14 @@ export const getOneTodo = async (req: Request, res: Response) => {
     const id = req.params.id;
     const result = await pool.query(`SELECT * FROM todos WHERE todo_id=${id}`);
 
-    res.json({ data: result.rows });
+    if (result.rowCount === 0) {
+      return res.status(404).json({ message: "Todo not Found" });
+    }
+
+    return successResponse(res, "Todos fetched succssfully", result.rows);
   } catch (err) {
     console.error("Error getting todo:", err);
-    res.status(500).json({ message: "Internal server error" });
+    return errorResponse(res, "Failed to fetch todos", 500);
   }
 };
 
@@ -34,10 +39,10 @@ export const createTodo = async (req: Request, res: Response) => {
       [title, description, user_id]
     );
 
-    res.status(201).json({ data: result.rows[0] });
+    return successResponse(res, "todo created succssfully", result.rows[0]);
   } catch (err) {
     console.error("Error create todo:", err);
-    res.status(500).json({ message: "Internal server error" });
+    return errorResponse(res, "Failed to create todos", 500);
   }
 };
 
@@ -54,7 +59,7 @@ export const updateTodo = async (req: Request, res: Response) => {
       return res.status(404).json({ message: "Todo not Found" });
     }
 
-    res.status(201).json({ data: result.rows[0] });
+    return successResponse(res, "todo updated succssfully", result.rows[0]);
   } catch (err) {
     console.error("Error update todo:", err);
     res.status(500).json({ message: "Internal server error" });
@@ -72,7 +77,7 @@ export const deleteTodo = async (req: Request, res: Response) => {
       return res.status(404).json({ message: "Todo not Found" });
     }
 
-    res.status(200).json({ message: "Todo deleted successfully" });
+    return successResponse(res, "todo deleted succssfully", result.rows[0]);
   } catch (err) {
     console.error("Error deleting todos:", err);
     res.status(500).json({ message: "Internal server error" });
