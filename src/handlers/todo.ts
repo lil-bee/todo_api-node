@@ -60,3 +60,21 @@ export const updateTodo = async (req: Request, res: Response) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
+
+export const deleteTodo = async (req: Request, res: Response) => {
+  try {
+    const id = req.params.id;
+    const result = await pool.query("DELETE FROM todos WHERE todo_id = $1", [
+      id,
+    ]);
+
+    if (result.rowCount === 0) {
+      return res.status(404).json({ message: "Todo not Found" });
+    }
+
+    res.status(200).json({ message: "Todo deleted successfully" });
+  } catch (err) {
+    console.error("Error deleting todos:", err);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};

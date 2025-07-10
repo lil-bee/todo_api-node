@@ -1,5 +1,11 @@
 import { Router } from "express";
-import { createTodo, getOneTodo, getTodos, updateTodo } from "./handlers/todo";
+import {
+  createTodo,
+  deleteTodo,
+  getOneTodo,
+  getTodos,
+  updateTodo,
+} from "./handlers/todo";
 
 const router = Router();
 
@@ -13,7 +19,7 @@ router.post("/todos", createTodo);
 
 router.put("/todos/:id", updateTodo);
 
-router.delete("/todos/:id", (req, res) => {});
+router.delete("/todos/:id", deleteTodo);
 
 /* ===== USER ====  */
 
