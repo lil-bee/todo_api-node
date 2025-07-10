@@ -25,3 +25,18 @@ export const getOneTodo = async (req: Request, res: Response) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
+
+export const createTodo = async (req: Request, res: Response) => {
+  try {
+    const { title, description, user_id } = req.body;
+    const result = await pool.query(
+      `INSERT INTO todos (title, description, user_id) VALUES ($1, $2, $3) RETURNING *`,
+      [title, description, user_id]
+    );
+
+    res.status(201).json({ data: result.rows[0] });
+  } catch (err) {
+    console.error("Error create todo:", err);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};

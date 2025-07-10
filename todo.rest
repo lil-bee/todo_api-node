@@ -1,0 +1,16 @@
+### GET TODOS
+GET http://localhost:3000/api/todos/
+
+### GET ONE TODO
+GET http://localhost:3000/api/todos/2
+
+### POST TODO
+POST http://localhost:3000/api/todos/
+Content-Type: application/json
+
+{
+  "title": "Coba insert aman",
+  "description": "Gunakan parameterized query",
+  "user_id": 1
+}
+
