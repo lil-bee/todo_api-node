@@ -14,3 +14,12 @@ Content-Type: application/json
   "user_id": 1
 }
 
+### UPDATE TODO
+PUT http://localhost:3000/api/todos/4
+Content-Type: application/json
+
+{
+  "title": "Update judul lagiii",
+  "description": "Update deskripsi"
+}
+

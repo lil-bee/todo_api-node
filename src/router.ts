@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createTodo, getOneTodo, getTodos } from "./handlers/todo";
+import { createTodo, getOneTodo, getTodos, updateTodo } from "./handlers/todo";
 
 const router = Router();
 
@@ -11,7 +11,7 @@ router.get("/todos/:id", getOneTodo);
 
 router.post("/todos", createTodo);
 
-router.put("/todos/:id", (req, res) => {});
+router.put("/todos/:id", updateTodo);
 
 router.delete("/todos/:id", (req, res) => {});
 
