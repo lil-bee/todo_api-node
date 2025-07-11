@@ -7,6 +7,7 @@ import {
   getTodos,
   updateTodo,
 } from "./handlers/todo";
+import { createNewUser, login } from "./handlers/user";
 import { validate } from "./modules/middleware";
 
 const router = Router();
@@ -51,8 +52,8 @@ router.delete("/users/:id", (req, res) => {});
 
 /* ===== AUTH ====  */
 
-router.post("/register", (req, res) => {});
+router.post("/register", createNewUser);
 
-router.post("/login", (req, res) => {});
+router.post("/login", login);
 
 export default router;

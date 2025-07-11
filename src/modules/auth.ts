@@ -1,6 +1,7 @@
 import * as bcrypt from "bcrypt";
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
+import { JWTPayload } from "../types";
 import { errorResponse } from "../utils/response";
 
 interface UserType {
@@ -43,7 +44,7 @@ export const protect = (req: Request, res: Response, next: NextFunction) => {
   }
 
   try {
-    const payload = jwt.verify(token, process.env.JWT_SECRET!);
+    const payload = jwt.verify(token, process.env.JWT_SECRET!) as JWTPayload;
     req.user = payload;
     console.log(payload);
     next();
