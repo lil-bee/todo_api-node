@@ -11,7 +11,7 @@ export const getTodos = async (req: Request, res: Response) => {
       [user_id]
     );
 
-    return successResponse(res, "Todos fetched succssfully", result.rows);
+    return successResponse(res, "Todos fetched successfully", result.rows);
   } catch (err) {
     console.error("Error getting todos:", err);
     return errorResponse(res, "Failed to fetch todos", 500);
@@ -21,13 +21,15 @@ export const getTodos = async (req: Request, res: Response) => {
 export const getOneTodo = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
-    const result = await pool.query(`SELECT * FROM todos WHERE todo_id=${id}`);
+    const result = await pool.query(`SELECT * FROM todos WHERE todo_id = $1`, [
+      id,
+    ]);
 
     if (result.rowCount === 0) {
       return res.status(404).json({ message: "Todo not Found" });
     }
 
-    return successResponse(res, "Todos fetched succssfully", result.rows);
+    return successResponse(res, "Todos fetched successfully", result.rows[0]);
   } catch (err) {
     console.error("Error getting todo:", err);
     return errorResponse(res, "Failed to fetch todos", 500);

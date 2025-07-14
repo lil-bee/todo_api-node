@@ -1,6 +1,6 @@
 ### GET TODOS
 GET http://localhost:3000/api/todos/
-Authorization: Bearer {{$processEnv BEARER_TOKEN}}
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXMiLCJpYXQiOjE3NTI0NjUzMTUsImV4cCI6MTc1MjU1MTcxNX0.ykfLS6J1Qze8QqAdprn6_lfEQ_AurOlhIieo_GcjKBI
 
 ### GET ONE TODO
 GET http://localhost:3000/api/todos/2
@@ -8,17 +8,17 @@ GET http://localhost:3000/api/todos/2
 ### POST TODO
 POST http://localhost:3000/api/todos/
 Content-Type: application/json
-Authorization: Bearer {{$processEnv BEARER_TOKEN}}
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXMiLCJpYXQiOjE3NTI0NjUzMTUsImV4cCI6MTc1MjU1MTcxNX0.ykfLS6J1Qze8QqAdprn6_lfEQ_AurOlhIieo_GcjKBI
 
 {
-  "title": "tes pake authh 2",
+  "title": "tes pake authh lagii (2)",
   "description": "mantapp"
 }
 
 ### UPDATE TODO
-PUT http://localhost:3000/api/todos/1
+PUT http://localhost:3000/api/todos/11
 Content-Type: application/json
-Authorization: Bearer {{$processEnv BEARER_TOKEN}}
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXMiLCJpYXQiOjE3NTI0NjUzMTUsImV4cCI6MTc1MjU1MTcxNX0.ykfLS6J1Qze8QqAdprn6_lfEQ_AurOlhIieo_GcjKBI
 
 {
   "title": "Update judul lagiii",
