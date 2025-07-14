@@ -1,5 +1,5 @@
 ### GET TODOS
-GET http://localhost:3000/api/todos/
+GET http://localhost:3000/api/todos?page=2&limit=15
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXMiLCJpYXQiOjE3NTI0NjUzMTUsImV4cCI6MTc1MjU1MTcxNX0.ykfLS6J1Qze8QqAdprn6_lfEQ_AurOlhIieo_GcjKBI
 
 ### GET ONE TODO

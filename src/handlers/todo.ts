@@ -6,12 +6,50 @@ import { errorResponse, successResponse } from "../utils/response";
 export const getTodos = async (req: Request, res: Response) => {
   try {
     const user_id = (req.user as JWTPayload).id;
-    const result = await pool.query(
-      "SELECT * FROM todos WHERE user_id = $1 ORDER BY todo_id ASC",
+
+    const page = Number(req.query.page as string) || 1;
+    const limit = Number(req.query.limit as string) || 10;
+
+    // Validasi input
+    if (isNaN(page) || page < 1) {
+      return errorResponse(res, "Page must be a valid number > 0", 400);
+    }
+
+    if (isNaN(limit) || limit < 1 || limit > 100) {
+      return errorResponse(
+        res,
+        "Limit must be a number between 1 and 100",
+        400
+      );
+    }
+
+    const offset = (page - 1) * limit;
+
+    const countResult = await pool.query(
+      "SELECT COUNT(*)::int AS total FROM todos WHERE user_id = $1",
       [user_id]
     );
 
-    return successResponse(res, "Todos fetched successfully", result.rows);
+    const total = countResult.rows[0].total;
+
+    const result = await pool.query(
+      "SELECT * FROM todos WHERE user_id = $1 ORDER BY created_at DESC LIMIT $2 OFFSET $3",
+      [user_id, limit, offset]
+    );
+
+    const totalPages = Math.ceil(total / limit);
+
+    const response = {
+      data: result.rows,
+      page,
+      limit,
+      total,
+      totalPages,
+      hasNext: page < totalPages,
+      hasPrev: page > 1,
+    };
+
+    return successResponse(res, "Todos fetched successfully", response);
   } catch (err) {
     console.error("Error getting todos:", err);
     return errorResponse(res, "Failed to fetch todos", 500);
