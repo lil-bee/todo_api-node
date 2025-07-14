@@ -55,7 +55,10 @@ export const login = async (req: Request, res: Response) => {
       return errorResponse(res, "Invalid username or password", 401);
     }
 
-    const token = createJWT(user.rows[0]);
+    const token = createJWT({
+      id: user.rows[0].user_id, // ✅ PENTING: ini bukan "id"
+      username: user.rows[0].username,
+    });
 
     // Return user without password
     const { password: _, ...userWithoutPassword } = user.rows[0];

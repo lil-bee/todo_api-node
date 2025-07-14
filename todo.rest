@@ -1,5 +1,6 @@
 ### GET TODOS
 GET http://localhost:3000/api/todos/
+Authorization: Bearer {{$processEnv BEARER_TOKEN}}
 
 ### GET ONE TODO
 GET http://localhost:3000/api/todos/2
@@ -7,16 +8,17 @@ GET http://localhost:3000/api/todos/2
 ### POST TODO
 POST http://localhost:3000/api/todos/
 Content-Type: application/json
+Authorization: Bearer {{$processEnv BEARER_TOKEN}}
 
 {
-  "title": "",
-  "description": "Gunakan parameterized query",
-  "user_id": 1
+  "title": "tes pake authh 2",
+  "description": "mantapp"
 }
 
 ### UPDATE TODO
-PUT http://localhost:3000/api/todos/4
+PUT http://localhost:3000/api/todos/1
 Content-Type: application/json
+Authorization: Bearer {{$processEnv BEARER_TOKEN}}
 
 {
   "title": "Update judul lagiii",
@@ -24,5 +26,6 @@ Content-Type: application/json
 }
 
 ### DELETE TODO
-DELETE  http://localhost:3000/api/todos/4
+DELETE  http://localhost:3000/api/todos/10
+Authorization: Bearer {{$processEnv BEARER_TOKEN}}
 

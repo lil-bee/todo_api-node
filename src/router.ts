@@ -8,11 +8,14 @@ import {
   updateTodo,
 } from "./handlers/todo";
 import { createNewUser, login } from "./handlers/user";
+import { protect } from "./modules/auth";
 import { validate } from "./modules/middleware";
 
 const router = Router();
 
 /* ===== TODO ====  */
+
+router.use("/todos", protect);
 
 router.get("/todos", getTodos);
 
@@ -23,7 +26,6 @@ router.post(
   validate([
     body("title").notEmpty().withMessage("Title is required"),
     body("description").notEmpty().withMessage("Description is required"),
-    body("user_id").notEmpty().isInt().withMessage("User ID must be number"),
   ]),
   createTodo
 );

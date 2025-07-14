@@ -13,6 +13,6 @@ POST http://localhost:3000/api/login/
 Content-Type: application/json
 
 {
-  "username": "tes",
-  "password": "test123"
+  "username": "fadhil",
+  "password": "hashedpassword"
 }
