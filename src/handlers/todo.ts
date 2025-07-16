@@ -127,7 +127,7 @@ export const deleteTodo = async (req: Request, res: Response) => {
 
     // 2. Cek apakah todo ini milik user yang login
     const todo = existing.rows[0];
-    if (todo.user_id !== req.user?.id) {
+    if (todo.user_id !== Number(req.user?.id)) {
       return res
         .status(403)
         .json({ message: "You are not allowed to access this todo" });

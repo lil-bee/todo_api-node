@@ -1,6 +1,6 @@
 ### GET TODOS
 GET http://localhost:3000/api/todos?page=2&limit=15
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXMiLCJpYXQiOjE3NTI0NjUzMTUsImV4cCI6MTc1MjU1MTcxNX0.ykfLS6J1Qze8QqAdprn6_lfEQ_AurOlhIieo_GcjKBI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXMiLCJpYXQiOjE3NTI2NTA5OTIsImV4cCI6MTc1MjczNzM5Mn0.EBpSVakGcGtb_u4170QSQ9BdfHV2ueRrunAK_7nJLG4
 
 ### GET ONE TODO
 GET http://localhost:3000/api/todos/2
@@ -8,7 +8,7 @@ GET http://localhost:3000/api/todos/2
 ### POST TODO
 POST http://localhost:3000/api/todos/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXMiLCJpYXQiOjE3NTI0NjUzMTUsImV4cCI6MTc1MjU1MTcxNX0.ykfLS6J1Qze8QqAdprn6_lfEQ_AurOlhIieo_GcjKBI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXMiLCJpYXQiOjE3NTI2NTA5OTIsImV4cCI6MTc1MjczNzM5Mn0.EBpSVakGcGtb_u4170QSQ9BdfHV2ueRrunAK_7nJLG4
 
 {
   "title": "tes pake authh lagii (2)",
@@ -18,7 +18,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hb
 ### UPDATE TODO
 PUT http://localhost:3000/api/todos/11
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXMiLCJpYXQiOjE3NTI0NjUzMTUsImV4cCI6MTc1MjU1MTcxNX0.ykfLS6J1Qze8QqAdprn6_lfEQ_AurOlhIieo_GcjKBI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXMiLCJpYXQiOjE3NTI2NTA5OTIsImV4cCI6MTc1MjczNzM5Mn0.EBpSVakGcGtb_u4170QSQ9BdfHV2ueRrunAK_7nJLG4
 
 {
   "title": "Update judul lagiii",
