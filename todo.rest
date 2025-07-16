@@ -29,3 +29,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hb
 DELETE  http://localhost:3000/api/todos/10
 Authorization: Bearer {{$processEnv BEARER_TOKEN}}
 
+### RANDOM URL
+GET http://localhost:3000/api/todsss
+
